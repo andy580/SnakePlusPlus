@@ -2,5 +2,5 @@
 // This file is intended to specify the map
 // Modify current values below to change height, width in pixels
 
-Height: 640
-Width: 640
+Height: 650
+Width: 650
