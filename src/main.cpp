@@ -6,12 +6,13 @@
 #include "mapParser.h"
 
 int main() {
+  map userInput;
   constexpr std::size_t kFramesPerSecond{60};
   constexpr std::size_t kMsPerFrame{1000 / kFramesPerSecond};
-  constexpr std::size_t kScreenWidth{640};
-  constexpr std::size_t kScreenHeight{640};
-  constexpr std::size_t kGridWidth{32};
-  constexpr std::size_t kGridHeight{32};
+  const int kScreenWidth{userInput.userWidth};
+  const int kScreenHeight{userInput.userHeight};
+  const int kGridWidth{userInput.gridWidth};
+  const int kGridHeight{userInput.gridHeight};
 
   Renderer renderer(kScreenWidth, kScreenHeight, kGridWidth, kGridHeight);
   Controller controller;

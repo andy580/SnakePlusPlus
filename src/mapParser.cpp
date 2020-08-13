@@ -25,6 +25,9 @@ void map::readMap() {
                 map::userWidth = frameDim<int>(std::stoi(value));
         }
     
+    map::gridHeight = int(map::userHeight/20)-1;
+    map::gridWidth = int(map::userWidth/20)-1;
+
     std::cout << "height: " << map::userHeight << "\nwidth: " << map::userWidth << "\n";
     }
 }

@@ -20,13 +20,17 @@ inputCheck frameDim (inputCheck userInput) {
 class map {
 
 public:
+    map() { readMap();};
     void readMap();
     void renderMap(); 
-    
+
+    int userWidth = 0;
+    int userHeight =0; 
+    int gridHeight = 0;
+    int gridWidth = 0;
     
 private:
-    int userWidth =0;
-    int userHeight =0; 
+    
     std::vector<int> walls; 
     std::string filename = "/home/andy/workspace/SnakePlusPlus/src/setup.txt";
 };

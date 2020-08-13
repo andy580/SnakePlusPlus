@@ -63,6 +63,7 @@ void Game::PlaceFood() {
       return;
     }
   }
+  
 }
 
 void Game::Update() {
