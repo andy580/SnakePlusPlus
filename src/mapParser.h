@@ -31,7 +31,7 @@ public:
     
 private:
     
-    std::vector<int> walls; 
+    std::vector<std::vector<int>> walls; 
     std::string filename = "/home/andy/workspace/SnakePlusPlus/src/setup.txt";
 };
 

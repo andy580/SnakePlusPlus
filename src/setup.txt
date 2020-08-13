@@ -1,6 +1,12 @@
 // Setup file for Snake
 // This file is intended to specify the map
 // Modify current values below to change height, width in pixels
+// To add a wall simply create a new line with "Wall: " and then 4 numbers
+// Wall formatting is: 
+// (#1,#2 = starting point, #3 = length in x direction, #4 = length in y direction)
 
 Height: 700
 Width: 700
+
+Wall: 3 3 0 5 
+Wall: 100 100 2 2
