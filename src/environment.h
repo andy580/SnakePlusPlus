@@ -3,6 +3,7 @@
 
 #include "mapParser.h"
 #include "SDL.h"
+#include <iostream>
 
 class environment : public map {
     
@@ -11,9 +12,10 @@ class environment : public map {
         void pointsToBlocks();
 
     private:
-         std::vector<SDL_Point> wall;
+         std::vector<SDL_Point> wallPoints;
+         SDL_Point point; 
         //  Origin pt for wall + deltas
-         int ox, oy, dx, dy; 
+         int ox=0, oy=0, dx =0, dy =0; 
 
 };
 

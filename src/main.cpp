@@ -4,9 +4,13 @@
 #include "renderer.h"
 
 #include "mapParser.h"
+#include "environment.h"
 
 int main() {
   map userInput;
+  environment envo; 
+  envo.populateWall();
+  
   constexpr std::size_t kFramesPerSecond{60};
   constexpr std::size_t kMsPerFrame{1000 / kFramesPerSecond};
   const int kScreenWidth{userInput.userWidth};

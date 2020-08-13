@@ -28,10 +28,11 @@ public:
     int userHeight =0; 
     int gridHeight = 0;
     int gridWidth = 0;
+    std::vector<std::vector<int>> walls; 
     
 private:
     
-    std::vector<std::vector<int>> walls; 
+    
     std::string filename = "/home/andy/workspace/SnakePlusPlus/src/setup.txt";
 };
 
