@@ -7,13 +7,15 @@
 #include "renderer.h"
 #include "snake.h"
 
-class Game {
+class Game : public environment{
  public:
   Game(std::size_t grid_width, std::size_t grid_height);
   void Run(Controller const &controller, Renderer &renderer,
            std::size_t target_frame_duration);
   int GetScore() const;
   int GetSize() const;
+
+  bool wallCell(int x, int y);
 
  private:
   Snake snake;
@@ -28,6 +30,8 @@ class Game {
 
   void PlaceFood();
   void Update();
+
+  
 };
 
 #endif

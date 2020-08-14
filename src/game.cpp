@@ -50,6 +50,14 @@ void Game::Run(Controller const &controller, Renderer &renderer,
   }
 }
 
+bool Game::wallCell(int x, int y){
+  for (auto pt : environment::wallPoints){
+    if (pt.x == x && pt.y == y)
+      return true;
+  }
+  return false;
+}
+
 void Game::PlaceFood() {
   int x, y;
   while (true) {
@@ -57,7 +65,7 @@ void Game::PlaceFood() {
     y = random_h(engine);
     // Check that the location is not occupied by a snake item before placing
     // food.
-    if (!snake.SnakeCell(x, y)) {
+    if (!snake.SnakeCell(x, y) && !Game::wallCell(x,y)) {
       food.x = x;
       food.y = y;
       return;
