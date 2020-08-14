@@ -61,7 +61,17 @@ void Snake::UpdateBody(SDL_Point &current_head_cell, SDL_Point &prev_head_cell) 
       alive = false;
     }
   }
+
+  // Check if snake has hit a wall  
+  for (auto pt : environment::wallPoints) {
+    if (current_head_cell.x == pt.x && current_head_cell.y == pt.y)
+      alive = false;
+  }
+
+
 }
+
+  
 
 void Snake::GrowBody() { growing = true; }
 

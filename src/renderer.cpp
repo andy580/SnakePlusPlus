@@ -97,7 +97,7 @@ void Renderer::Render(Snake const snake, SDL_Point const &food) {
   if (snake.alive) {
     SDL_SetRenderDrawColor(sdl_renderer, 0x00, 0x7A, 0xCC, 0xFF);
   } else {
-    SDL_SetRenderDrawColor(sdl_renderer, 0xFF, 0x00, 0x00, 0xFF);
+    SDL_SetRenderDrawColor(sdl_renderer, 0x80, 0x00, 0xFF, 0x80);
   }
   SDL_RenderFillRect(sdl_renderer, &block);
 

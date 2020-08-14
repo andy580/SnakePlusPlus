@@ -4,7 +4,9 @@
 #include <vector>
 #include "SDL.h"
 
-class Snake {
+#include "environment.h"
+
+class Snake : public environment {
  public:
   enum class Direction { kUp, kDown, kLeft, kRight };
 
