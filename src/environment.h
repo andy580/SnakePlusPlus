@@ -8,11 +8,17 @@
 class environment : public map {
     
     public:
+        environment() {
+            std::cout << "\nEnvironment constructor called\n";
+            populateWall();
+
+        }
         void populateWall(); 
-        void pointsToBlocks();
+
+        std::vector<SDL_Point> wallPoints;
 
     private:
-         std::vector<SDL_Point> wallPoints;
+         
          SDL_Point point; 
         //  Origin pt for wall + deltas
          int ox=0, oy=0, dx =0, dy =0; 

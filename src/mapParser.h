@@ -20,7 +20,10 @@ inputCheck frameDim (inputCheck userInput) {
 class map {
 
 public:
-    map() { readMap();};
+    map() { 
+        readMap();
+        std::cout << "\nMap constructor called\n";
+        };
     void readMap();
     void renderMap(); 
 
