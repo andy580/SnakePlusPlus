@@ -2,17 +2,17 @@
 #include <iostream>
 #include "SDL.h"
 
-Game::Game(std::size_t grid_width, std::size_t grid_height)
-    : snake(grid_width, grid_height),
+Game::Game(environment &userSpec)
+    : snake(userSpec.windowDim[2], userSpec.windowDim[3]),
       engine(dev()),
-      random_w(0, static_cast<int>(grid_width)),
-      random_h(0, static_cast<int>(grid_height)) {
-  PlaceFood();
+      random_w(0, static_cast<int>(userSpec.windowDim[2])),
+      random_h(0, static_cast<int>(userSpec.windowDim[3])) {
+  PlaceFood(userSpec);
   std::cout << "\nGame constructor called\n";
 }
 
 void Game::Run(Controller const &controller, Renderer &renderer,
-               std::size_t target_frame_duration) {
+               std::size_t target_frame_duration, environment &userSpec) {
   Uint32 title_timestamp = SDL_GetTicks();
   Uint32 frame_start;
   Uint32 frame_end;
@@ -25,8 +25,8 @@ void Game::Run(Controller const &controller, Renderer &renderer,
 
     // Input, Update, Render - the main game loop.
     controller.HandleInput(running, snake);
-    Update();
-    renderer.Render(snake, food);
+    Update(userSpec);
+    renderer.Render(snake, food, userSpec);
 
     frame_end = SDL_GetTicks();
 
@@ -51,22 +51,22 @@ void Game::Run(Controller const &controller, Renderer &renderer,
   }
 }
 
-bool Game::wallCell(int x, int y){
-  for (auto pt : environment::wallPoints){
+bool Game::wallCell(int x, int y, environment &userSpec){
+  for (auto pt : userSpec.wallPoints){
     if (pt.x == x && pt.y == y)
       return true;
   }
   return false;
 }
 
-void Game::PlaceFood() {
+void Game::PlaceFood(environment &userSpec) {
   int x, y;
   while (true) {
     x = random_w(engine);
     y = random_h(engine);
     // Check that the location is not occupied by a snake item before placing
     // food.
-    if (!snake.SnakeCell(x, y) && !Game::wallCell(x,y)) {
+    if (!snake.SnakeCell(x, y) && !Game::wallCell(x,y, userSpec)) {
       food.x = x;
       food.y = y;
       return;
@@ -75,7 +75,7 @@ void Game::PlaceFood() {
   
 }
 
-void Game::Update() {
+void Game::Update(environment &userSpec) {
   if (!snake.alive) return;
 
   snake.Update();
@@ -86,7 +86,7 @@ void Game::Update() {
   // Check if there's food over here
   if (food.x == new_x && food.y == new_y) {
     score++;
-    PlaceFood();
+    PlaceFood(userSpec);
     // Grow snake and increase speed.
     snake.GrowBody();
     snake.speed += 0.02;

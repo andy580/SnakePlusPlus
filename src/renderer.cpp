@@ -2,13 +2,11 @@
 #include <iostream>
 #include <string>
 
-Renderer::Renderer(const std::size_t screen_width,
-                   const std::size_t screen_height,
-                   const std::size_t grid_width, const std::size_t grid_height)
-    : screen_width(screen_width),
-      screen_height(screen_height),
-      grid_width(grid_width),
-      grid_height(grid_height) {
+Renderer::Renderer(environment &userSpec)
+    : screen_width(userSpec.windowDim[0]),
+      screen_height(userSpec.windowDim[1]),
+      grid_width(userSpec.windowDim[2]),
+      grid_height(userSpec.windowDim[3]) {
 
     std::cout << "\nRender constructor called\n";
   // Initialize SDL
@@ -16,7 +14,7 @@ Renderer::Renderer(const std::size_t screen_width,
     std::cerr << "SDL could not initialize.\n";
     std::cerr << "SDL_Error: " << SDL_GetError() << "\n";
   }
-
+  
   // Create Window
   sdl_window = SDL_CreateWindow("Snake Game", SDL_WINDOWPOS_CENTERED,
                                 SDL_WINDOWPOS_CENTERED, screen_width,
@@ -58,7 +56,7 @@ Renderer::~Renderer() {
 // }
 
 
-void Renderer::Render(Snake const snake, SDL_Point const &food) {
+void Renderer::Render(Snake const snake, SDL_Point const &food, environment &userSpec) {
   SDL_Rect block;
   block.w = screen_width / grid_width;
   block.h = screen_height / grid_height;
@@ -69,7 +67,7 @@ void Renderer::Render(Snake const snake, SDL_Point const &food) {
 
   // Render Walls
   SDL_SetRenderDrawColor(sdl_renderer, 0xFF, 0x00, 0x00, 0xFF);
-  for (SDL_Point const &point : environment::wallPoints) {
+  for (SDL_Point const &point : userSpec.wallPoints) {
       block.x = point.x * block.w;
       block.y = point.y * block.h;
       // std::cout << "\n points to blocks function " << block.x << " " << block.y << "\n";
