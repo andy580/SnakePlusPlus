@@ -6,19 +6,19 @@
 
 #include "environment.h"
 
-class Snake : public environment {
+class Snake {
  public:
   enum class Direction { kUp, kDown, kLeft, kRight };
 
-  Snake(int grid_width, int grid_height)
-      : grid_width(grid_width),
-        grid_height(grid_height),
-        head_x(grid_width / 2),
-        head_y(grid_height / 2) {
+  Snake(environment &userSpec)
+      : grid_width(userSpec.windowDim[2]),
+        grid_height(userSpec.windowDim[3]),
+        head_x(userSpec.windowDim[2] / 2),
+        head_y(userSpec.windowDim[3] / 2) {
             std::cout << "\nSnake constructor called\n";
         }
 
-  void Update();
+  void Update(environment &userSpec);
 
   void GrowBody();
   bool SnakeCell(int x, int y);
@@ -34,7 +34,7 @@ class Snake : public environment {
 
  private:
   void UpdateHead();
-  void UpdateBody(SDL_Point &current_cell, SDL_Point &prev_cell);
+  void UpdateBody(SDL_Point &current_cell, SDL_Point &prev_cell, environment &userSpec);
 
   bool growing{false};
   int grid_width;

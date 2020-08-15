@@ -3,7 +3,7 @@
 #include "SDL.h"
 
 Game::Game(environment &userSpec)
-    : snake(userSpec.windowDim[2], userSpec.windowDim[3]),
+    : snake(userSpec),
       engine(dev()),
       random_w(0, static_cast<int>(userSpec.windowDim[2])),
       random_h(0, static_cast<int>(userSpec.windowDim[3])) {
@@ -78,7 +78,7 @@ void Game::PlaceFood(environment &userSpec) {
 void Game::Update(environment &userSpec) {
   if (!snake.alive) return;
 
-  snake.Update();
+  snake.Update(userSpec);
 
   int new_x = static_cast<int>(snake.head_x);
   int new_y = static_cast<int>(snake.head_y);
