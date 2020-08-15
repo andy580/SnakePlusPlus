@@ -2,15 +2,17 @@
 #include <iostream>
 #include <string>
 
-Renderer::Renderer(const std::size_t screen_width,
-                   const std::size_t screen_height,
-                   const std::size_t grid_width, const std::size_t grid_height)
-    : screen_width(screen_width),
-      screen_height(screen_height),
-      grid_width(grid_width),
-      grid_height(grid_height) {
+Renderer::Renderer(environment &userSpec)
+    : screen_width(userSpec.windowDim[0]),
+      screen_height(userSpec.windowDim[1]),
+      grid_width(userSpec.windowDim[2]),
+      grid_height(userSpec.windowDim[3]) {
 
     std::cout << "\nRender constructor called\n";
+
+  // Reference to wall points from environment object
+  userWallPoints = &userSpec.wallPoints;
+
   // Initialize SDL
   if (SDL_Init(SDL_INIT_VIDEO) < 0) {
     std::cerr << "SDL could not initialize.\n";
@@ -34,7 +36,8 @@ Renderer::Renderer(const std::size_t screen_width,
     std::cerr << "SDL_Error: " << SDL_GetError() << "\n";
   }
 
-  // environment::populateWall();
+// REMOVE FUNCTION POPULATE WALL
+  // userSpec.populateWall();
 }
 
 Renderer::~Renderer() {
@@ -43,19 +46,19 @@ Renderer::~Renderer() {
 }
 
 
-// void Renderer::pointsToBlocks() {
-//   SDL_Rect block;
+void Renderer::pointsToBlocks() {
+  SDL_Rect block;
   
-//   block.w = map::userWidth / map::gridWidth;
-//   block.h = map::userHeight / map::gridHeight;
-//   SDL_SetRenderDrawColor(sdl_renderer, 0xFF, 0xFF, 0xFF, 0xFF);
-//   for (SDL_Point const &point : environment::wallPoints) {
+  block.w = screen_width / grid_width;
+  block.h = screen_height / grid_height;
+  SDL_SetRenderDrawColor(sdl_renderer, 0xFF, 0xFF, 0xFF, 0xFF);
+  for (SDL_Point const &point : *userWallPoints) {
       
-//       block.x = point.x * block.w;
-//       block.y = point.y * block.h;
-//       SDL_RenderFillRect(sdl_renderer, &block);
-//   }
-// }
+      block.x = point.x * block.w;
+      block.y = point.y * block.h;
+      SDL_RenderFillRect(sdl_renderer, &block);
+  }
+}
 
 
 void Renderer::Render(Snake const snake, SDL_Point const &food) {
@@ -69,7 +72,7 @@ void Renderer::Render(Snake const snake, SDL_Point const &food) {
 
   // Render Walls
   SDL_SetRenderDrawColor(sdl_renderer, 0xFF, 0x00, 0x00, 0xFF);
-  for (SDL_Point const &point : environment::wallPoints) {
+  for (SDL_Point const &point : *userWallPoints) {
       block.x = point.x * block.w;
       block.y = point.y * block.h;
       // std::cout << "\n points to blocks function " << block.x << " " << block.y << "\n";

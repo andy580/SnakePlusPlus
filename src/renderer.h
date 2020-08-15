@@ -7,10 +7,9 @@
 
 #include "environment.h"
 
-class Renderer : public environment {
+class Renderer {
  public:
-  Renderer(const std::size_t screen_width, const std::size_t screen_height,
-           const std::size_t grid_width, const std::size_t grid_height);
+  Renderer(environment &userSpec);
 
   ~Renderer();
 
@@ -23,6 +22,8 @@ class Renderer : public environment {
  private:
   SDL_Window *sdl_window;
   SDL_Renderer *sdl_renderer;
+
+  std::vector<SDL_Point> *userWallPoints;
 
   const std::size_t screen_width;
   const std::size_t screen_height;

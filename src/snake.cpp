@@ -63,7 +63,7 @@ void Snake::UpdateBody(SDL_Point &current_head_cell, SDL_Point &prev_head_cell) 
   }
 
   // Check if snake has hit a wall  
-  for (auto pt : environment::wallPoints) {
+  for (auto pt : userWallPoints) {
     if (current_head_cell.x == pt.x && current_head_cell.y == pt.y)
       alive = false;
   }

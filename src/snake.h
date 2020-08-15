@@ -6,22 +6,25 @@
 
 #include "environment.h"
 
-class Snake : public environment {
+class Snake {
  public:
   enum class Direction { kUp, kDown, kLeft, kRight };
 
-  Snake(int grid_width, int grid_height)
-      : grid_width(grid_width),
-        grid_height(grid_height),
+  Snake(environment userSpec)
+      : grid_width(userSpec.windowDim[2]),
+        grid_height(userSpec.windowDim[3]),
         head_x(grid_width / 2),
         head_y(grid_height / 2) {
             std::cout << "\nSnake constructor called\n";
+            userWallPoints = userSpec.wallPoints;
         }
 
   void Update();
 
   void GrowBody();
   bool SnakeCell(int x, int y);
+
+  std::vector<SDL_Point> userWallPoints;
 
   Direction direction = Direction::kUp;
 

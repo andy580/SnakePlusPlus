@@ -8,8 +8,7 @@
 
 int main() {
   environment userDef;
-  
-  
+
   constexpr std::size_t kFramesPerSecond{60};
   constexpr std::size_t kMsPerFrame{1000 / kFramesPerSecond};
   const int kScreenWidth{userDef.windowDim[0]};
@@ -17,9 +16,9 @@ int main() {
   const int kGridWidth{userDef.windowDim[2]};
   const int kGridHeight{userDef.windowDim[3]};
 
-  Renderer renderer(kScreenWidth, kScreenHeight, kGridWidth, kGridHeight);
+  Renderer renderer(userDef);
   Controller controller;
-  Game game(kGridWidth, kGridHeight);
+  Game game(userDef);
   game.Run(controller, renderer, kMsPerFrame);
 
 

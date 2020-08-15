@@ -2,13 +2,16 @@
 #include <iostream>
 #include "SDL.h"
 
-Game::Game(std::size_t grid_width, std::size_t grid_height)
-    : snake(grid_width, grid_height),
+Game::Game(environment &userSpec)
+    : snake(userSpec),
       engine(dev()),
-      random_w(0, static_cast<int>(grid_width)),
-      random_h(0, static_cast<int>(grid_height)) {
+      random_w(0, static_cast<int>(userSpec.windowDim[2])),
+      random_h(0, static_cast<int>(userSpec.windowDim[3])) {
   PlaceFood();
   std::cout << "\nGame constructor called\n";
+
+  // Reference to wall points from environment object
+  userWallPoints = userSpec.wallPoints;
 }
 
 void Game::Run(Controller const &controller, Renderer &renderer,
@@ -52,7 +55,9 @@ void Game::Run(Controller const &controller, Renderer &renderer,
 }
 
 bool Game::wallCell(int x, int y){
-  for (auto pt : environment::wallPoints){
+  // std::cout << "Seg Fault here 1?\n";
+  for (SDL_Point const pt : userWallPoints){
+    // std::cout << "Seg Fault here 2?\n";
     if (pt.x == x && pt.y == y)
       return true;
   }
