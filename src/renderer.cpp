@@ -34,7 +34,7 @@ Renderer::Renderer(const std::size_t screen_width,
     std::cerr << "SDL_Error: " << SDL_GetError() << "\n";
   }
 
-  environment::populateWall();
+  // environment::populateWall();
 }
 
 Renderer::~Renderer() {
@@ -43,19 +43,19 @@ Renderer::~Renderer() {
 }
 
 
-void Renderer::pointsToBlocks() {
-  SDL_Rect block;
+// void Renderer::pointsToBlocks() {
+//   SDL_Rect block;
   
-  block.w = map::userWidth / map::gridWidth;
-  block.h = map::userHeight / map::gridHeight;
-  SDL_SetRenderDrawColor(sdl_renderer, 0xFF, 0xFF, 0xFF, 0xFF);
-  for (SDL_Point const &point : environment::wallPoints) {
+//   block.w = map::userWidth / map::gridWidth;
+//   block.h = map::userHeight / map::gridHeight;
+//   SDL_SetRenderDrawColor(sdl_renderer, 0xFF, 0xFF, 0xFF, 0xFF);
+//   for (SDL_Point const &point : environment::wallPoints) {
       
-      block.x = point.x * block.w;
-      block.y = point.y * block.h;
-      SDL_RenderFillRect(sdl_renderer, &block);
-  }
-}
+//       block.x = point.x * block.w;
+//       block.y = point.y * block.h;
+//       SDL_RenderFillRect(sdl_renderer, &block);
+//   }
+// }
 
 
 void Renderer::Render(Snake const snake, SDL_Point const &food) {

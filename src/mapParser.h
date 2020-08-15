@@ -25,7 +25,6 @@ public:
         std::cout << "\nMap constructor called\n";
         };
     void readMap();
-    void renderMap(); 
 
     int userWidth = 0;
     int userHeight =0; 

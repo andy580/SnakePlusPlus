@@ -7,14 +7,15 @@
 #include "environment.h"
 
 int main() {
-  map userInput;
+  environment userDef;
+  
   
   constexpr std::size_t kFramesPerSecond{60};
   constexpr std::size_t kMsPerFrame{1000 / kFramesPerSecond};
-  const int kScreenWidth{userInput.userWidth};
-  const int kScreenHeight{userInput.userHeight};
-  const int kGridWidth{userInput.gridWidth};
-  const int kGridHeight{userInput.gridHeight};
+  const int kScreenWidth{userDef.windowDim[0]};
+  const int kScreenHeight{userDef.windowDim[1]};
+  const int kGridWidth{userDef.windowDim[2]};
+  const int kGridHeight{userDef.windowDim[3]};
 
   Renderer renderer(kScreenWidth, kScreenHeight, kGridWidth, kGridHeight);
   Controller controller;

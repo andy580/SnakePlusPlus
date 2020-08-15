@@ -5,17 +5,19 @@
 #include "SDL.h"
 #include <iostream>
 
-class environment : public map {
+class environment {
     
     public:
         environment() {
             std::cout << "\nEnvironment constructor called\n";
-            populateWall();
-
+            map userInput;
+            populateWall(userInput);
+            windowDim = {userInput.userWidth, userInput.userHeight, userInput.gridWidth, userInput.gridHeight};
         }
-        void populateWall(); 
+        void populateWall(map &specs); 
 
         std::vector<SDL_Point> wallPoints;
+        std::vector<int> windowDim; 
 
     private:
          

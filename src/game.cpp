@@ -8,6 +8,7 @@ Game::Game(std::size_t grid_width, std::size_t grid_height)
       random_w(0, static_cast<int>(grid_width)),
       random_h(0, static_cast<int>(grid_height)) {
   PlaceFood();
+  std::cout << "\nGame constructor called\n";
 }
 
 void Game::Run(Controller const &controller, Renderer &renderer,

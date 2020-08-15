@@ -16,6 +16,7 @@ class Game : public environment{
   int GetSize() const;
 
   bool wallCell(int x, int y);
+  
 
  private:
   Snake snake;
