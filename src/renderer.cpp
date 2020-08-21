@@ -107,8 +107,8 @@ void Renderer::Render(Snake const snake, snakeEater const eater, SDL_Point const
   // Render snake eater body
   SDL_SetRenderDrawColor(sdl_renderer, 0x00, 0xFF, 0x00, 0xFF);
     // temporary value for snakeEater
-  block.x = eater.posn * block.w;
-  block.y = eater.posn * block.h;
+  block.x = eater.head_x * block.w;
+  block.y = eater.head_y * block.h;
   SDL_RenderFillRect(sdl_renderer, &block);
   
 

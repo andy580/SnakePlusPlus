@@ -20,11 +20,12 @@ class Game {
 
   std::vector<SDL_Point> userWallPoints;
   
-
+  SDL_Point food;
+  
  private:
   Snake snake;
-  snakeEater fox; 
-  SDL_Point food;
+  snakeEater falcon; 
+  
 
   std::random_device dev;
   std::mt19937 engine;

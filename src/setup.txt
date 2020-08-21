@@ -5,8 +5,8 @@
 // Wall formatting is: 
 // (#1,#2 = starting point, #3 = length in x direction, #4 = length in y direction)
 
-Height: 700
-Width: 700
+Height: 640
+Width: 640
 
 Wall: 3 3 0 5 
 Wall: 10 10 3 3

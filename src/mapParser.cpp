@@ -33,8 +33,8 @@ void map::readMap() {
             }
         }
     
-    map::gridHeight = int(map::userHeight/20)-1;
-    map::gridWidth = int(map::userWidth/20)-1;
+    map::gridHeight = int(map::userHeight/20);
+    map::gridWidth = int(map::userWidth/20);
 
     }
 }
