@@ -5,6 +5,7 @@
 
 #include "mapParser.h"
 #include "environment.h"
+#include "snakeEater.h"
 
 int main() {
   environment userDef;
@@ -20,6 +21,8 @@ int main() {
   Controller controller;
   Game game(userDef);
   game.Run(controller, renderer, kMsPerFrame);
+
+  snakeEater sn;
 
 
   std::cout << "Game has terminated successfully!\n";
