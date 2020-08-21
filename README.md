@@ -1,3 +1,39 @@
+# Game Instructions
+
+Before running the game, one can modify the "setup.txt" file to add obstacles (walls) into the game. 
+If the snake runs into these walls the game is over. 
+Food will not be placed on these walls. 
+
+Once the game begins, the console will ask for adverserial cpu speed.
+The adverserial CPU will steal food and reduce score by -1. 
+Recommend speed of 0.2. 
+
+Ensure path to "setup.txt" file is correct in file "mapParser.h" Line 38.
+
+# Criteria Met:
+- README (ALL)
+- Compiles
+
+- Loops / IO: 
+  -> External file read in class "mapParser.h" Line 24
+  -> User input takein from "main.cpp" Line 22
+  -> Variety of control structures and clear organization in classes "mapParser.h", "snakeEater.h", "environment.h"
+  
+- OOP: 
+  -> Project uses OOP techniques in files "mapParser.h", "snakeEater.h", "environment.h"
+  -> All class variables in "mapParser.h", "snakeEater.h", "environment.h" are declared as public / private
+  -> Overloaded class constructor / function in "snakeEater.cpp" Line 7 
+  -> Template used in "mapParser.h" Line 9
+
+- Memory Management:
+  -> Function pass by references: 
+    --> "Environment.h" Line 17
+    --> "Renderer.h" Line 13
+    --> "Renderer.h" Line 18
+    --> "Game.h" Line 13
+    (many more, more than 2 already listed, met requirements)
+
+
 # CPPND: Capstone Snake Game Example
 
 This is a starter repo for the Capstone project in the [Udacity C++ Nanodegree Program](https://www.udacity.com/course/c-plus-plus-nanodegree--nd213). The code for this repo was inspired by [this](https://codereview.stackexchange.com/questions/212296/snake-game-in-c-with-sdl) excellent StackOverflow post and set of responses.
