@@ -5,11 +5,11 @@
 #include <iostream>
 
 
-class snakeEater {
+class snakeEater : public Snake {
 
 public:
     snakeEater();
-
+    int posn = 1;
 private:
 
 };

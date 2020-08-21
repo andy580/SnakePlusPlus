@@ -5,6 +5,7 @@
 Game::Game(environment &userSpec)
     : 
       snake(),
+      fox(),
       engine(dev()),
       random_w(0, static_cast<int>(userSpec.windowDim[2])),
       random_h(0, static_cast<int>(userSpec.windowDim[3])) {
@@ -30,7 +31,7 @@ void Game::Run(Controller const &controller, Renderer &renderer,
     // Input, Update, Render - the main game loop.
     controller.HandleInput(running, snake);
     Update();
-    renderer.Render(snake, food);
+    renderer.Render(snake, fox, food);
 
     frame_end = SDL_GetTicks();
 

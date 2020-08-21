@@ -6,6 +6,7 @@
 #include "snake.h"
 
 #include "environment.h"
+#include "snakeEater.h"
 
 class Renderer {
  public:
@@ -14,7 +15,7 @@ class Renderer {
   ~Renderer();
 
   void pointsToBlocks();
-  void Render(Snake const snake, SDL_Point const &food);
+  void Render(Snake const snake, snakeEater const eater, SDL_Point const &food);
   void UpdateWindowTitle(int score, int fps);
 
   
