@@ -10,13 +10,12 @@ class Snake {
  public:
   enum class Direction { kUp, kDown, kLeft, kRight };
 
-  Snake(environment userSpec)
+  Snake()
       : grid_width(userSpec.windowDim[2]),
         grid_height(userSpec.windowDim[3]),
         head_x(grid_width / 2),
         head_y(grid_height / 2) {
             std::cout << "\nSnake constructor called\n";
-            userWallPoints = userSpec.wallPoints;
         }
 
   void Update();
@@ -24,7 +23,8 @@ class Snake {
   void GrowBody();
   bool SnakeCell(int x, int y);
 
-  std::vector<SDL_Point> userWallPoints;
+  environment userSpec;
+  std::vector<SDL_Point> userWallPoints = userSpec.wallPoints;
 
   Direction direction = Direction::kUp;
 

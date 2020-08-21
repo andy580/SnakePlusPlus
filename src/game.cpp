@@ -3,7 +3,8 @@
 #include "SDL.h"
 
 Game::Game(environment &userSpec)
-    : snake(userSpec),
+    : 
+      snake(),
       engine(dev()),
       random_w(0, static_cast<int>(userSpec.windowDim[2])),
       random_h(0, static_cast<int>(userSpec.windowDim[3])) {
