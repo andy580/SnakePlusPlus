@@ -99,6 +99,17 @@ void Game::Update() {
     snake.GrowBody();
     snake.speed += 0.02;
   }
+
+  int thief_x = static_cast<int>(thief.head_x);
+  int thief_y = static_cast<int>(thief.head_y);
+  if (abs(food.x - thief_x) <1.1 && abs(food.y - thief_y) <1.1) {
+    score--;
+    PlaceFood();
+    // Grow snake and increase speed.
+    
+  }
+
+
 }
 
 int Game::GetScore() const { return score; }

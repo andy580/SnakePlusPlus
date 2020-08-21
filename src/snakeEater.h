@@ -19,7 +19,7 @@ public:
     float calcDist(float x1, float y1, SDL_Point &food); 
     float head_x;
     float head_y;
-    Direction d;
+    
 
 
 
@@ -27,6 +27,7 @@ private:
     float speed{0.5f};
     float dcurr;
     float dnext; 
+    Direction d;
     
 };
 
