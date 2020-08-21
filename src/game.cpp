@@ -2,10 +2,10 @@
 #include <iostream>
 #include "SDL.h"
 
-Game::Game(environment &userSpec)
+Game::Game(environment &userSpec, float userSpeed)
     : 
       snake(),
-      falcon(),
+      thief(userSpeed),
       engine(dev()),
       random_w(0, static_cast<int>(userSpec.windowDim[2])),
       random_h(0, static_cast<int>(userSpec.windowDim[3])) {
@@ -31,7 +31,7 @@ void Game::Run(Controller const &controller, Renderer &renderer,
     // Input, Update, Render - the main game loop.
     controller.HandleInput(running, snake);
     Update();
-    renderer.Render(snake, falcon, food);
+    renderer.Render(snake, thief, food);
 
     frame_end = SDL_GetTicks();
 
@@ -86,7 +86,7 @@ void Game::Update() {
   if (!snake.alive) return;
 
   snake.Update();
-  falcon.updatePosn(food);
+  thief.updatePosn(food);
 
   int new_x = static_cast<int>(snake.head_x);
   int new_y = static_cast<int>(snake.head_y);

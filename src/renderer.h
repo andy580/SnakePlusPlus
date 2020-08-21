@@ -15,7 +15,7 @@ class Renderer {
   ~Renderer();
 
   void pointsToBlocks();
-  void Render(Snake const snake, snakeEater const eater, SDL_Point const &food);
+  void Render(Snake const snake, Thief const eater, SDL_Point const &food);
   void UpdateWindowTitle(int score, int fps);
 
   

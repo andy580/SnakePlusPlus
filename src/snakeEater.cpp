@@ -1,11 +1,14 @@
 #include "snakeEater.h"
 #include <math.h>
 
-snakeEater::snakeEater() {
+Thief::Thief() {
     std::cout << "\nSnakeEater class called\n";
 }
+Thief::Thief(float userSpeed) {
+  speed = userSpeed;
+}
 
-void snakeEater::updatePosn(SDL_Point &food) {
+void Thief::updatePosn(SDL_Point &food) {
     
 // Inefficient method to calculate next best move
     dcurr = calcDist(head_x, head_y, food);
@@ -56,7 +59,7 @@ void snakeEater::updatePosn(SDL_Point &food) {
     // std::cout << "Head x: " << head_x << " Head y: " << head_y << " distance: " << dcurr << " Dist next: " << dnext << "\n";
 }
 
-float snakeEater::calcDist(float x1, float y1, SDL_Point &food) {
+float Thief::calcDist(float x1, float y1, SDL_Point &food) {
     float x2 = float(food.x);
     float y2 = float(food.y);
     x1 -= x2;

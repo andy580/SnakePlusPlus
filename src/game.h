@@ -10,7 +10,7 @@
 
 class Game {
  public:
-  Game(environment &userSpec);
+  Game(environment &userSpec, float userSpeed);
   void Run(Controller const &controller, Renderer &renderer,
            std::size_t target_frame_duration);
   int GetScore() const;
@@ -24,7 +24,7 @@ class Game {
   
  private:
   Snake snake;
-  snakeEater falcon; 
+  Thief thief; 
   
 
   std::random_device dev;

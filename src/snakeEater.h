@@ -7,10 +7,11 @@
 #include <cmath>
 
 
-class snakeEater : public Snake {
+class Thief : public Snake {
 
 public:
-    snakeEater();
+    Thief();
+    Thief(float userSpeed);
     int posn = 1;
     int posn2 = 1;
 
@@ -23,7 +24,7 @@ public:
 
 
 private:
-    float speed{0.2f};
+    float speed{0.5f};
     float dcurr;
     float dnext; 
     

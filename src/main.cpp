@@ -17,9 +17,14 @@ int main() {
   const int kGridWidth{userDef.windowDim[2]};
   const int kGridHeight{userDef.windowDim[3]};
 
+  std::cout << "Enter adverserial CPU speed between 0.1-0.5 [easy-very hard]\n";
+  float userSpeed;
+  std::cin >> userSpeed; 
+  std::cout << "You entered: " << userSpeed << " Good Luck!\n"; 
+
   Renderer renderer(userDef);
   Controller controller;
-  Game game(userDef);
+  Game game(userDef, userSpeed);
   game.Run(controller, renderer, kMsPerFrame);
 
   std::cout << "Game has terminated successfully!\n";
