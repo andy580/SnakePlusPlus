@@ -7,32 +7,29 @@ snakeEater::snakeEater() {
 
 void snakeEater::updatePosn(SDL_Point &food) {
     
-    head_x = fmod(head_x + grid_width, grid_width);
-    head_y = fmod(head_y + grid_height, grid_height);
-
 // Inefficient method to calculate next best move
     dcurr = calcDist(head_x, head_y, food);
-    Direction d;
-    dnext = calcDist(head_x+speed, head_y, food);
+    
+    dnext = abs(calcDist(head_x+speed, head_y, food));
     if (dnext < dcurr) {
         dcurr = dnext; 
         d = Direction::kRight;
     }
         
-    dnext = calcDist(head_x-speed, head_y, food);
+    dnext = abs(calcDist(head_x-speed, head_y, food));
     if (dnext < dcurr) {
         dcurr = dnext;
         d = Direction::kLeft;
     }
 
-    dnext = calcDist(head_x, head_y+speed, food);
+    dnext = abs(calcDist(head_x, head_y+speed, food));
     if (dnext < dcurr) {
         dcurr = dnext;
         d = Direction::kUp;
     }
         
 
-    dnext = calcDist(head_x, head_y-speed, food);
+    dnext = abs(calcDist(head_x, head_y-speed, food));
     if (dnext < dcurr) {
         dcurr = dnext;
         d = Direction::kDown;
@@ -40,11 +37,11 @@ void snakeEater::updatePosn(SDL_Point &food) {
         
     switch (d) {
     case Direction::kUp:
-      head_y -= speed;
+      head_y += speed;
       break;
 
     case Direction::kDown:
-      head_y += speed;
+      head_y -= speed;
       break;
 
     case Direction::kLeft:
@@ -55,7 +52,8 @@ void snakeEater::updatePosn(SDL_Point &food) {
       head_x += speed;
       break;
   }
-    
+
+    // std::cout << "Head x: " << head_x << " Head y: " << head_y << " distance: " << dcurr << " Dist next: " << dnext << "\n";
 }
 
 float snakeEater::calcDist(float x1, float y1, SDL_Point &food) {
